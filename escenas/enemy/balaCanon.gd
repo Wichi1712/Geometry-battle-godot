@@ -3,6 +3,7 @@ extends Area2D
 var velocidadX = 0
 var velocidadY = 0
 var direccion = Vector2.ZERO
+export (int) var damage = 20#Daño que causa a player
 
 func _ready():
 	#direccion = Vector2(velocidadX,velocidadY)

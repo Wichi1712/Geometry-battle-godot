@@ -1,14 +1,14 @@
 extends KinematicBody2D
 
-export var velocidad = 350
+export (int) var velocidad = 350
 var giro = 0
 var dir = Vector2.ZERO
 var move = Vector2()
 var tamanoPantalla
 var puedeDisparar = true
-#export (PackedScene) var BulletScene
+export (PackedScene) onready var bullet
 
-var bullet = preload("res://escenas/player/bulletPlayer.tscn")
+#var bullet = preload("res://escenas/player/bulletPlayer.tscn")
 
 func _ready():
 	tamanoPantalla = get_viewport_rect().size
@@ -68,7 +68,7 @@ func disparo():
 	if Input.is_action_pressed("ui_space") && puedeDisparar:
 		var bull = bullet.instance()
 		#Este es un metodo de la escena bulletSquare
-		#$posBullet es un nodo tipo position2D
+		#$bulletPosition es un nodo tipo position2D
 		bull.start($Sprite/BulletPosition.global_position, $Sprite.rotation)
 		get_parent().add_child(bull)
 		puedeDisparar = false
@@ -77,3 +77,22 @@ func disparo():
 
 func _on_Timer_timeout():
 	puedeDisparar = true
+
+#func damagePlayer(damage):
+#	globalVar.playerEnergy -= damage;
+
+func _on_Area2D_area_entered(area):
+	#Elimina nodos kinematic
+	if area.get_parent().is_in_group("bulletEnemy"):
+#		"""
+#		*Se obtiene la variable daño(damage) que causa el enemigo.
+#		*Se usa get_parent para acceder al nodo padre (kinematic)
+#		 de lo contrario solo eliminariamos el nodo area y la 
+#		 instancia no se eliminaria"""
+		#damagePlayer(area.get_parent().damage)
+		globalVar.playerEnergy -= area.get_parent().damage
+		area.get_parent().queue_free()
+	#En este caso elimina solo nodos del tipo area2D
+	elif area.is_in_group("bulletEnemy"):
+		globalVar.playerEnergy -= area.damage
+		area.queue_free()

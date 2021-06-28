@@ -8,7 +8,7 @@ var tamanoPantalla
 var puedeDisparar = true
 #export (PackedScene) var BulletScene
 
-var bullet = preload("res://escenas/player/test/bulletPlayer.tscn")
+var bullet = preload("res://escenas/player/bulletPlayer.tscn")
 
 func _ready():
 	tamanoPantalla = get_viewport_rect().size
@@ -73,3 +73,16 @@ func disparo():
 func _on_Timer_timeout():
 	puedeDisparar = true
 
+#func damagePlayer(damage):
+#	globalVar.playerEnergy -= damage;
+
+func _on_Area2D_area_entered(area):
+	if area.get_parent().is_in_group("bulletEnemy"):
+		"""
+		*Se obtiene la variable daño(damage) que causa el enemigo.
+		*Se usa get_parent para acceder al nodo padre (kinematic)
+		 de lo contrario solo eliminariamos el nodo area y la 
+		 instancia no se eliminaria"""
+		#damagePlayer(area.get_parent().damage)
+		globalVar.playerEnergy -= area.get_parent().damage;
+		area.get_parent().queue_free();

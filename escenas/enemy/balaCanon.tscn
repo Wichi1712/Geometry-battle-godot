@@ -9,7 +9,9 @@ load_path = "res://.import/blackBall.png-8584330777cd8be73698a08b9f87d6a6.stex"
 [sub_resource type="CircleShape2D" id=2]
 radius = 15.8298
 
-[node name="balaCuadrado" type="Area2D"]
+[node name="balaCuadrado" type="Area2D" groups=[
+"bulletEnemy",
+]]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

@@ -17,7 +17,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26.4879, 19.1526 )
 
-[node name="tanque" type="Area2D"]
+[node name="tanque" type="Area2D" groups=[
+"enemy",
+]]
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true

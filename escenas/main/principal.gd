@@ -6,6 +6,6 @@ func _ready():
 	#OS.window_fullscreen = true#pantalla completa
 
 
-"""NOTA
-Si no existe una instancia de player tambien desaparecera la camara
-"""
+#"""NOTA
+#Si no existe una instancia de player tambien desaparecera la camara
+#"""

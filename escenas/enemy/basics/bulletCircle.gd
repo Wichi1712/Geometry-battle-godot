@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var speed = 550
 var velocity = Vector2()
+export (int) var damage = 20
 
 func start(pos, dir):
 	rotation = dir
@@ -22,6 +23,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("solid"):
 		queue_free()
-	if body.is_in_group("player"):
-		body.queue_free()
-		queue_free()
+#	if body.is_in_group("player"):
+#		body.queue_free()
+#		queue_free()

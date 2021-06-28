@@ -1,16 +1,16 @@
 extends Area2D
 
-var velocidad = 150;
+var velocidad = 150
 #var direccion = Vector2.ZERO
 #var bala = preload("res://escenas/enemy/balaCanon.tscn")
 export (PackedScene) var bala
-var dir = -velocidad;
+var dir = -velocidad
 
 func _ready():
 	pass
 
 func _process(delta):
-	move_local_x(dir * delta, true);
+	move_local_x(dir * delta, true)
 	#move()
 	#move2()
 	#position += direccion * delta
@@ -56,8 +56,8 @@ func _process(delta):
 func disparar():
 	var balaCuadrado = bala.instance()
 	get_parent().add_child(balaCuadrado)
-	balaCuadrado.position.x = self.position.x;
-	balaCuadrado.position.y = self.position.y - 10;
+	balaCuadrado.position.x = self.position.x
+	balaCuadrado.position.y = self.position.y - 10
 	
 func _on_Cuadrado_area_entered(area):
 	if area.is_in_group("enemigo"):
@@ -66,10 +66,12 @@ func _on_Cuadrado_area_entered(area):
 
 
 func _on_Timer_timeout():
-	disparar();
+	disparar()
 
 
 func _on_Canon_body_entered(body):
 	if body.is_in_group("solid"):
-		if dir == -velocidad: dir = velocidad;
-		else: dir = -velocidad;
+		if dir == -velocidad:
+			dir = velocidad
+		else:
+			dir = -velocidad

@@ -17,7 +17,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 19.5064, 9.57379 )
 
-[node name="Canon" type="Area2D"]
+[node name="Canon" type="Area2D" groups=[
+"enemy",
+]]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -26,7 +28,7 @@ bala = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

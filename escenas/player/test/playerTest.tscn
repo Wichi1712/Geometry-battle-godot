@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://escenas/player/test/playerTest.gd" type="Script" id=1]
 [ext_resource path="res://sprites/CubeYellow.png" type="Texture" id=2]
 [ext_resource path="res://sprites/spr_nave2_0.png" type="Texture" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 13.918
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12.758, 12.3948 )
 
 [node name="playerTest" type="KinematicBody2D" groups=[
 "player",
@@ -28,6 +30,7 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 0.188235, 0.0745098, 0.0431373, 1 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -46,4 +49,11 @@ drag_margin_v_enabled = true
 smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color( 0.0666667, 0.364706, 0.827451, 1 )
+shape = SubResource( 2 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

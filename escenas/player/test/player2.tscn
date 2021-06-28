@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://escenas/player/test/player2.gd" type="Script" id=1]
-[ext_resource path="res://escenas/player/test/bulletPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://escenas/player/bulletPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sprites/spr_nave2_0.png" type="Texture" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.1309, 10.9214 )
