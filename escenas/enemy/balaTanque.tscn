@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://escenas/enemy/balaCanon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/spr_tanquebala_0.png" type="Texture" id=2]
+[ext_resource path="res://sprites/spr_tanquebala_1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/spr_tanquebala_2.png" type="Texture" id=4]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/blackBall.png-8584330777cd8be73698a08b9f87d6a6.stex"
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.01647
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[node name="balaTanque" instance=ExtResource( 1 )]
+
+[node name="Sprite" parent="." index="0"]
+visible = false
+texture = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
+frames = SubResource( 3 )
+frame = 2
+playing = true

@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://escenas/player/test/player2Test.gd" type="Script" id=1]
+[ext_resource path="res://sprites/CubeYellow.png" type="Texture" id=2]
+[ext_resource path="res://sprites/spr_nave2_0.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 13.918
+
+[node name="player2Test" type="KinematicBody2D" groups=[
+"player",
+]]
+position = Vector2( 489.234, 371.743 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+offset = Vector2( 5, 0 )
+
+[node name="BulletPosition" type="Position2D" parent="Sprite"]
+position = Vector2( 22.23, -0.997 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/BulletPosition"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
+"player",
+]]
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.14
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = 2
+limit_top = 2
+limit_right = 2000
+limit_bottom = 1500
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
