@@ -4,7 +4,6 @@
 [ext_resource path="res://escenas/player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://backgrounds/montana.png" type="Texture" id=3]
 
-
 [node name="TestScene" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]

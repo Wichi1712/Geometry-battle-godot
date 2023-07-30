@@ -9,7 +9,7 @@ var puedeDisparar = true
 var objetivo
 #export (PackedScene) var BulletScene
 
-var bullet = preload("res://escenas/player/test/bulletPlayer.tscn")
+var bullet = preload("res://escenas/player/bulletPlayer.tscn")
 
 func _ready():
 	tamanoPantalla = get_viewport_rect().size
